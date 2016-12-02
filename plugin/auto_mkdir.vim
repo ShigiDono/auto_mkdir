@@ -47,6 +47,9 @@ function <SID>auto_chdir()
     " <afile>:p:h")
     if isdirectory(s:dir)
         execute ":lcd " . expand("%:p:h")
+    endif
+endfunction
+
 
 function <SID>auto_mkdir()
 	" Get directory the file is supposed to be saved in
