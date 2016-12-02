@@ -47,7 +47,7 @@ function <SID>auto_mkdir()
 	" Create that directory (and its parents) if it doesn't exist yet
 	if !isdirectory(s:dir)
 		call mkdir(s:dir, "p")
-        execute `cd` %:p:h
+        execute `cd` s:dir 
         execute `pwd`
 	endif
 endfunction
