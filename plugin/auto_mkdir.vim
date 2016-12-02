@@ -38,8 +38,15 @@ endif
 augroup auto_mkdir
 	au!
 	au BufWritePre,FileWritePre * call <SID>auto_mkdir()
-    au BufEnter *   execute ":lcd " . expand("%:p:h") 
+    au BufEnter * call <SID>auto_chdir()
+
 augroup END
+
+function <SID>auto_chdir()
+    let s:dir = expand("%:p:h") 
+    " <afile>:p:h")
+    if isdirectory(s:dir)
+        execute ":lcd " . expand("%:p:h")
 
 function <SID>auto_mkdir()
 	" Get directory the file is supposed to be saved in
