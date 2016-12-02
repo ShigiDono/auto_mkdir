@@ -38,6 +38,7 @@ endif
 augroup auto_mkdir
 	au!
 	au BufWritePre,FileWritePre * call <SID>auto_mkdir()
+    au BufEnter *   execute ":lcd " . expand("%:p:h") 
 augroup END
 
 function <SID>auto_mkdir()
@@ -47,7 +48,7 @@ function <SID>auto_mkdir()
 	" Create that directory (and its parents) if it doesn't exist yet
 	if !isdirectory(s:dir)
 		call mkdir(s:dir, "p")
-        execute `cd` s:dir 
-        execute `pwd`
+        execute ":lcd " . expand("%:p:h")
+        execute ":pwd"
 	endif
 endfunction
